@@ -2,13 +2,13 @@
 /**
  * The core plugin class
  *
- * @package    Plugin
+ * @package    antibrand_plugin
  * @subpackage Includes
  *
  * @since      1.0.0
  */
 
-namespace Plugin\Includes;
+namespace Antibrand_Site\Includes;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -71,17 +71,20 @@ final class Init {
 	 */
 	private function dependencies() {
 
-		// Plugin settings class.
-		require_once ABP_PATH . 'includes/class-settings.php';
+		// antibrand plugin settings class.
+		require_once ABS_PATH . 'includes/class-settings.php';
 
 		// Admin/backend functionality, scripts and styles.
-		require_once ABP_PATH . 'admin/class-admin.php';
+		require_once ABS_PATH . 'admin/class-admin.php';
 
 		// Frontend functionality, scripts and styles.
-		require_once ABP_PATH . 'frontend/class-frontend.php';
+		require_once ABS_PATH . 'frontend/class-frontend.php';
+
+		// Post types and taxonomies.
+		require_once ABS_PATH . 'includes/post-types-taxes/class-post-type-tax.php';
 
 		// Translation functionality.
-		require_once ABP_PATH . 'includes/class-i18n.php';
+		require_once ABS_PATH . 'includes/class-i18n.php';
 
 	}
 
@@ -95,18 +98,18 @@ final class Init {
 	public function plugin_support() {
 
 		// Add Advanced Custom Fields Support.
-		if ( abp_acf() ) {
-			include_once ABP_PATH . 'includes/acf/class-extend-acf.php';
+		if ( abs_acf() ) {
+			include_once ABS_PATH . 'includes/acf/class-extend-acf.php';
 		}
 
 		// Add Beaver Builder support.
 		if ( class_exists( 'FLBuilder' ) ) {
-			include_once ABP_PATH . 'includes/beaver/class-beaver-builder.php';
+			include_once ABS_PATH . 'includes/beaver/class-beaver-builder.php';
 		}
 
 		// Add Elementor support.
-		if ( class_exists( '\Elementor\Plugin' ) ) {
-			include_once ABP_PATH . 'includes/elementor/class-elementor.php';
+		if ( class_exists( '\Elementor\antibrand plugin' ) ) {
+			include_once ABS_PATH . 'includes/elementor/class-elementor.php';
 		}
 
 	}
@@ -120,11 +123,11 @@ final class Init {
  * @access public
  * @return object Returns an instance of the class.
  */
-function abp_init() {
+function abs_init() {
 
 	return Init::instance();
 
 }
 
 // Run an instance of the class.
-abp_init();
+abs_init();

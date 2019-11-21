@@ -1,13 +1,13 @@
 <?php
 /**
- * Plugin deactivation class.
+ * antibrand plugin deactivation class.
  *
  * This file must not be namespaced.
  *
  * @link       http://ccdzine.com
  * @since      1.0.0
  *
- * @package    Plugin
+ * @package    antibrand_plugin
  * @subpackage Includes
  */
 
@@ -17,7 +17,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 /**
- * Plugin deactivation class.
+ * antibrand plugin deactivation class.
  *
  * @since  1.0.0
  * @access public
@@ -79,7 +79,7 @@ class Antibrand_Deactivate {
  * @access public
  * @return object Returns an instance of the class.
  */
-function abp_deactivate() {
+function abs_deactivate() {
 
 	return Antibrand_Deactivate::instance();
 

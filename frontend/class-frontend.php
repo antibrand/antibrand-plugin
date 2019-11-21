@@ -2,13 +2,13 @@
 /**
  * The frontend functionality of the plugin
  *
- * @package    Plugin
+ * @package    antibrand_plugin
  * @subpackage Frontend
  *
  * @since      1.0.0
  */
 
-namespace Plugin\Frontend;
+namespace Antibrand_Site\Frontend;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -77,11 +77,11 @@ class Frontend {
  * @access public
  * @return object Returns an instance of the class.
  */
-function abp_frontend() {
+function abs_frontend() {
 
 	return Frontend::instance();
 
 }
 
 // Run an instance of the class.
-abp_frontend();
+abs_frontend();

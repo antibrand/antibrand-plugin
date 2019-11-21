@@ -1,49 +1,20 @@
 <?php
 /**
- * Plugin
+ * antibrand plugin
  *
- * @package     Plugin
+ * @package     antibrand_plugin
  * @version     1.0.0
- * @link        https://github.com/antibrand/plugin
+ * @link        https://github.com/antibrand/antibrand-plugin
  *
- * Plugin Name:  plugin
- * Plugin URI:   https://github.com/antibrand/plugin
- * Description:  A basic starter plugin for your website management system.
+ * Plugin Name:  antibrand plugin
+ * Plugin URI:   https://github.com/antibrand/antibrand-plugin
+ * Description:  Plugin for the antibrand website.
  * Version:      1.0.0
  * Author:
  * Author URI:
  * Text Domain:  antibrand
  * Domain Path:  /languages
  * Tested up to:
- */
-
-/**
- * Renaming the plugin
- *
- * First change the name of this file to reflect the directory name of your plugin.
- *
- * Next change the information above in the plugin header, and either change
- * the plugin name in the License & Warranty notice or remove it.
- *
- * Following is a list of strings to find and replace in all plugin files.
- *
- * 1. Plugin name & namespace
- *    Find `Plugin` and replace with your plugin name, include
- *    underscores between words. This will change the primary plugin class name
- *    and the package name in file headers.
- *
- * 2. Text domain
- *    Find antibrand and replace with the new name of your
- *    primary plugin file (this file).
- *
- * 3. Constants prefix
- *    Find `ABP` and replace with something unique to your plugin name. Use
- *    only uppercase letters.
- *
- * 4. General prefix
- *    Find `abp` and replace with something unique to your plugin name. Use
- *    only lowercase letters. This will change the prefix of all filters and
- *    settings, and the prefix of functions outside of a class.
  */
 
 // If this file is called directly, abort.
@@ -62,8 +33,8 @@ if ( ! defined( 'WPINC' ) ) {
  */
 
 // First check for other classes with the same name.
-if ( ! class_exists( 'Plugin' ) ) :
-	final class Plugin {
+if ( ! class_exists( 'Antibrand_Plugin' ) ) :
+	final class Antibrand_Plugin {
 
 		/**
 		 * Instance of the class
@@ -119,7 +90,7 @@ if ( ! class_exists( 'Plugin' ) ) :
 		private function constants() {
 
 			/**
-			 * Plugin version
+			 * antibrand plugin version
 			 *
 			 * Keeping the version at 1.0.0 as this is a starter plugin but
 			 * you may want to start counting as you develop for your use case.
@@ -127,8 +98,8 @@ if ( ! class_exists( 'Plugin' ) ) :
 			 * @since  1.0.0
 			 * @return string Returns the latest plugin version.
 			 */
-			if ( ! defined( 'ABP_VERSION' ) ) {
-				define( 'ABP_VERSION', '1.0.0' );
+			if ( ! defined( 'ABS_VERSION' ) ) {
+				define( 'ABS_VERSION', '1.0.0' );
 			}
 
 			/**
@@ -137,30 +108,30 @@ if ( ! class_exists( 'Plugin' ) ) :
 			 * @since  1.0.0
 			 * @return string Returns the text domain of the plugin.
 			 */
-			if ( ! defined( 'ABP_DOMAIN' ) ) {
-				define( 'ABP_DOMAIN', 'antibrand' );
+			if ( ! defined( 'ABS_DOMAIN' ) ) {
+				define( 'ABS_DOMAIN', 'antibrand' );
 			}
 
 			/**
-			 * Plugin folder path
+			 * antibrand plugin folder path
 			 *
 			 * @since  1.0.0
 			 * @return string Returns the filesystem directory path (with trailing slash)
 			 *                for the plugin __FILE__ passed in.
 			 */
-			if ( ! defined( 'ABP_PATH' ) ) {
-				define( 'ABP_PATH', plugin_dir_path( __FILE__ ) );
+			if ( ! defined( 'ABS_PATH' ) ) {
+				define( 'ABS_PATH', plugin_dir_path( __FILE__ ) );
 			}
 
 			/**
-			 * Plugin folder URL
+			 * antibrand plugin folder URL
 			 *
 			 * @since  1.0.0
 			 * @return string Returns the URL directory path (with trailing slash)
 			 *                for the plugin __FILE__ passed in.
 			 */
-			if ( ! defined( 'ABP_URL' ) ) {
-				define( 'ABP_URL', plugin_dir_url( __FILE__ ) );
+			if ( ! defined( 'ABS_URL' ) ) {
+				define( 'ABS_URL', plugin_dir_url( __FILE__ ) );
 			}
 
 			/**
@@ -175,8 +146,8 @@ if ( ! class_exists( 'Plugin' ) ) :
 			 * @since  1.0.0
 			 * @return string Returns the URL slug of the admin pages.
 			 */
-			if ( ! defined( 'ABP_ADMIN_SLUG' ) ) {
-				define( 'ABP_ADMIN_SLUG', 'antibrand' );
+			if ( ! defined( 'ABS_ADMIN_SLUG' ) ) {
+				define( 'ABS_ADMIN_SLUG', 'antibrand' );
 			}
 
 		}
@@ -219,13 +190,13 @@ if ( ! class_exists( 'Plugin' ) ) :
 		private function dependencies() {
 
 			// The hub of all other dependency files.
-			require_once ABP_PATH . 'includes/class-init.php';
+			require_once ABS_PATH . 'includes/class-init.php';
 
 			// Include the activation class.
-			require_once ABP_PATH . 'includes/class-activate.php';
+			require_once ABS_PATH . 'includes/class-activate.php';
 
 			// Include the deactivation class.
-			require_once ABP_PATH . 'includes/class-deactivate.php';
+			require_once ABS_PATH . 'includes/class-deactivate.php';
 
 		}
 
@@ -237,22 +208,22 @@ if ( ! class_exists( 'Plugin' ) ) :
 	 *
 	 * @since  1.0.0
 	 * @access public
-	 * @return object Returns the instance of the `Plugin` class.
+	 * @return object Returns the instance of the `antibrand plugin` class.
 	 */
-	function abp_plugin() {
+	function abs_plugin() {
 
-		return Plugin::instance();
+		return Antibrand_Plugin::instance();
 
 	}
 
 	// Begin plugin functionality.
-	abp_plugin();
+	abs_plugin();
 
 // End the check for the plugin class.
 endif;
 
 // Bail out now if the core class was not run.
-if ( ! function_exists( 'abp_plugin' ) ) {
+if ( ! function_exists( 'abs_plugin' ) ) {
 	return;
 }
 
@@ -263,8 +234,8 @@ if ( ! function_exists( 'abp_plugin' ) ) {
  * @access public
  * @return void
  */
-register_activation_hook( __FILE__, '\abp_activate_plugin' );
-register_deactivation_hook( __FILE__, '\abp_deactivate_plugin' );
+register_activation_hook( __FILE__, '\abs_activate_plugin' );
+register_deactivation_hook( __FILE__, '\abs_deactivate_plugin' );
 
 /**
  * The code that runs during plugin activation.
@@ -273,10 +244,10 @@ register_deactivation_hook( __FILE__, '\abp_deactivate_plugin' );
  * @access public
  * @return void
  */
-function abp_activate_plugin() {
+function abs_activate_plugin() {
 
 	// Run the activation class.
-	abp_activate();
+	abs_activate();
 
 }
 
@@ -287,10 +258,10 @@ function abp_activate_plugin() {
  * @access public
  * @return void
  */
-function abp_deactivate_plugin() {
+function abs_deactivate_plugin() {
 
 	// Run the deactivation class.
-	abp_deactivate();
+	abs_deactivate();
 
 }
 
@@ -301,7 +272,7 @@ function abp_deactivate_plugin() {
  * @access public
  * @return bool Returns true if the ACF free or Pro plugin is active.
  */
-function abp_acf() {
+function abs_acf() {
 
 	if ( class_exists( 'acf' ) ) {
 		return true;
@@ -318,7 +289,7 @@ function abp_acf() {
  * @access public
  * @return bool Returns true if the ACF Pro plugin is active.
  */
-function abp_acf_pro() {
+function abs_acf_pro() {
 
 	if ( class_exists( 'acf_pro' ) ) {
 		return true;
