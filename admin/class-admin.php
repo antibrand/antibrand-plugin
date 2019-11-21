@@ -93,9 +93,13 @@ class Admin {
         // Get the current screen as a variable.
 		$screen = get_current_screen();
 
-		// Post type: post.
+		// Post type: project.
         if ( 'project' == $screen->post_type ) {
-            $post_title = esc_html__( 'Project Title', 'antibrand' );
+			$post_title = esc_html__( 'Project Name', 'antibrand' );
+
+		// Post type: snippet.
+		} elseif ( 'snippet' == $screen->post_type ) {
+			$post_title = esc_html__( 'Snippet Title', 'antibrand' );
 
         // Post type: post.
 		} elseif ( 'post' == $screen->post_type ) {
