@@ -58,6 +58,9 @@ class Admin {
 	 */
 	private function __construct() {
 
+		// Enqueue the JavaScript for the admin area.
+		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
+
 		// Replace default post title placeholders.
 		add_filter( 'enter_title_here', [ $this, 'title_placeholders' ] );
 
@@ -74,6 +77,26 @@ class Admin {
 	 * @return void
 	 */
 	private function dependencies() {}
+
+	/**
+	 * Enqueue the JavaScript for the admin area.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
+	 */
+	public function enqueue_scripts() {
+
+		// Enqueue jQuery tabs.
+		wp_enqueue_script( 'jquery-ui-tabs' );
+
+		// Enqueue jQuery tooltips.
+		wp_enqueue_script( 'jquery-ui-tooltip' );
+
+		// Text swap scripts for removing brand name instances.
+		wp_enqueue_script( 'text-swap', ABS_URL . 'admin/assets/js/text-swap.js', [ 'jquery' ], '', true );
+
+	}
 
 	/**
      * Replace default post title placeholders.
